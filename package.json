@@ -4,9 +4,11 @@
   "main": "index.js",
   "scripts": {
     "prepare": "husky install",
-    "test": "jest",
+    "test": "NODE_EVN=test jest --detectOpenHandles",
     "start": "nodemon -e js,ejs",
-    "start:prod": "node index.js"
+    "start:prod": "node index.js",
+    "pretest": "NODE_ENV=test npx sequelize-cli db:drop && NODE_ENV=test npx sequelize-cli db:create",
+    "db:create:test": "NODE_ENV=test npx sequelize-cli db:create"
   },
   "author": "Muhammed Shibil M <muhammedshibilm321@gmail.com --location=global>",
   "license": "ISC",
