@@ -1,4 +1,17 @@
-body{
-    background-color: black;
-    color: white;
+body{   
+    font-family: Calibari, sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+table, th, td{
+ border-collapse: collapse;
+  padding: 10px;
+  border: 2px solid black;
+}
+
+tr:nth-child(even){
+    background-color: #D6EEEE;
 }
