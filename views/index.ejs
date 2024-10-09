@@ -8,12 +8,17 @@
 </head>
 <body>
     <%- include("header.ejs") %>
-    <table>
+
+    <div class="Tododata">
+          <table>
         <% for(var i=0; i < allTodos.length; i++) {%>
             <tr>
                 <td> <%= allTodos[i].title %> </td>
             </tr>
         <% } %>
     </table>
+    </div>
+
+    <%- include("footer.ejs") %>
 </body>
 </html>
