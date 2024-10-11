@@ -28,26 +28,9 @@
                     </div>
                 </div>
             </form>
-            <div>
-                <h5 id="overdue" class="text-xl font-semibold">Overdue <span id="overdueCount" class="px-2 bg-gray-300 rounded"><%= overdue.length %></span></h5>
-                <ul class="list-none">
-                    <%- include("todos.ejs",{todos: overdue})%>
-                </ul>
-            </div>
-            <div>
-                <h5 id="dueToday" class="text-xl font-semibold">Due Today <span id="dueTodayCount" class="px-2 bg-gray-300 rounded"><%= dueToday.length %></span></h5>
-                <ul class="list-none">
-                    <%- include("todos.ejs",{todos: dueToday})%>
-                </ul>
-            </div>
-            <div>
-                <h5 id="dueLater" class="text-xl font-semibold">Due Later <span id="dueLaterCount" class="px-2 bg-gray-300 rounded"><%= dueLater.length %></span></h5>
-                <ul class="list-none">
-                    <%- include("todos.ejs",{todos: dueLater})%>
-                </ul>
-            </div>
-            </div>
+           <%- include("todos.ejs")%>
         </div>
+    </div>
     </div>
 </body>
 
