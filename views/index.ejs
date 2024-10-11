@@ -28,7 +28,42 @@
                     </div>
                 </div>
             </form>
-           <%- include("todos.ejs")%>
+            <div>
+                <div class="flex gap-2">
+                    <h5>Overdue</h5>
+                    <span id="count-overdue" class="px-2 bg-gray-300 rounded ">
+                        <%= overdue.length %>
+                    </span>
+                </div>
+                <ul class="list-none">
+                   <%- include("todos.ejs", {data: overdue}) %>
+                </ul>
+            </div>
+
+            <div>
+                <div class="flex gap-2">
+                    <h5 id="dueToday">Due Today</h5>
+                    <span id="count-due-today" class="px-2 bg-gray-300 rounded">
+                        <%= dueToday.length %>
+                    </span>
+                </div>
+                <ul class="list-none">
+                    <%- include("todos.ejs", {data: dueToday}) %>
+                </ul>
+            </div>
+
+            <div>
+                <div class="flex gap-2">
+                    <h5 id="dueLater">Due Later </h5>
+                    <span id="count-due-later" class="px-2 bg-gray-300 rounded">
+                        <%= dueLater.length %>
+                    </span>
+                </div>
+                <ul class="list-none">
+                    <%- include("todos.ejs", {data: dueLater}) %>
+                </ul>
+            </div>
+            
         </div>
     </div>
     </div>
