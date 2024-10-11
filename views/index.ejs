@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/styles.css">
-     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.2/dist/tailwind.min.css" rel="stylesheet">
     <title>Todo-Manager</title>
 </head>
+
 <body>
     <div class="grid grid-cols-6">
         <div class="col-start-3 col-span-2 space-y-3">
@@ -14,10 +16,12 @@
             <form>
                 <div class="flex gap-2">
                     <div class="flex-auto">
-                        <input type="text" name="task" id="task" placeholder="What's next ?" class="border border-gray-300 text-gray-900 p-2 w-full rounded text-smb leading-4" required>
+                        <input type="text" name="task" id="task" placeholder="What's next ?"
+                            class="border border-gray-300 text-gray-900 p-2 w-full rounded text-smb leading-4" required>
                     </div>
                     <div class="flex-auto">
-                        <input type="date" name="date" id="date" class="border border-gray-300 text-gray-900 p-2 w-full rounded text-sm" required>
+                        <input type="date" name="date" id="date"
+                            class="border border-gray-300 text-gray-900 p-2 w-full rounded text-sm" required>
                     </div>
                     <div class="flex-none">
                         <button type="submit" class="bg-green-500 text-white p-2 w-full rounded-lg">Add</button>
@@ -25,33 +29,26 @@
                 </div>
             </form>
             <div>
-                <div class="flex gap-2">
-                    <h5 id="overdue" class="text-xl font-semibold">Overdue</h5>
-                    <h6 class="bg-gray-200 rounded px-3 text-center font-semibold "><%= overdue.length %></h6>
-                </div>
-                <ul  class="list-none">
+                <h5 id="overdue" class="text-xl font-semibold">Overdue <span id="overdueCount" class="px-2 bg-gray-300 rounded"><%= overdue.length %></span></h5>
+                <ul class="list-none">
                     <%- include("todos.ejs",{todos: overdue})%>
                 </ul>
             </div>
             <div>
-                <div class="flex gap-2">
-                <h5 id="dueToday" class="text-xl font-semibold">Due Today</h5>
-                <h6 class="bg-gray-200 rounded px-3 text-center font-semibold "><%= dueToday.length %></h6>
-                </div>
+                <h5 id="dueToday" class="text-xl font-semibold">Due Today <span id="dueTodayCount" class="px-2 bg-gray-300 rounded"><%= dueToday.length %></span></h5>
                 <ul class="list-none">
                     <%- include("todos.ejs",{todos: dueToday})%>
                 </ul>
             </div>
             <div>
-                <div class="flex gap-2">
-                <h5 id="dueLater" class="text-xl font-semibold">Due Later</h5>
-                <h6 class="bg-gray-200 rounded px-3 text-center font-semibold "><%= dueLater.length %></h6>
-                </div>
+                <h5 id="dueLater" class="text-xl font-semibold">Due Later <span id="dueLaterCount" class="px-2 bg-gray-300 rounded"><%= dueLater.length %></span></h5>
                 <ul class="list-none">
                     <%- include("todos.ejs",{todos: dueLater})%>
                 </ul>
             </div>
+            </div>
         </div>
     </div>
 </body>
+
 </html>
