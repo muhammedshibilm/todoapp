@@ -10,11 +10,14 @@ app.use(bodyParser.json());
 app.set("view engine", "ejs")
 
 app.get("/",  async (request, response) => {
-  const allTodos = await Todo.getTodos()
+
+  const dueToday = await Todo.dueToday();
+  const overdue = await Todo.overdue();
+  const dueLater = await Todo.dueLater();
+    
+ 
   if (request.accepts("html")) {
-      return response.render("index",{
-        allTodos
-      })
+      return response.render("index",{dueToday,overdue,dueLater});
   }else{
     return response.json({allTodos})
   }
@@ -50,7 +53,7 @@ app.get("/todos/:id", async function (request, response) {
   } catch (error) {
     console.log(error);
     return response.status(422).json(error);
-  }
+  } 
 });
 
 app.post("/todos", async function (request, response) {

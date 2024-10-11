@@ -4,14 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/styles.css">
-    <title>Home</title>
+     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.2/dist/tailwind.min.css" rel="stylesheet">
+    <title>Todo-Manager</title>
 </head>
 <body>
-    <header> <%- include("header.ejs") %> </header>
-     
-    <%- include("todos.ejs") %>
-     
-    <footer> <%- include("footer.ejs") %> </footer>
- 
+    <div class="grid grid-cols-6">
+        <div class="col-start-3 col-span-2 space-y-3">
+            <header> <%- include("header.ejs") %> </header>
+            <form>
+                <div class="flex gap-2">
+                    <div class="flex-auto">
+                        <input type="text" name="task" id="task" placeholder="What's next ?" class="border border-gray-300 text-gray-900 p-2 w-full rounded text-smb leading-4" required>
+                    </div>
+                    <div class="flex-auto">
+                        <input type="date" name="date" id="date" class="border border-gray-300 text-gray-900 p-2 w-full rounded text-sm" required>
+                    </div>
+                    <div class="flex-none">
+                        <button type="submit" class="bg-green-500 text-white p-2 w-full rounded-lg">Add</button>
+                    </div>
+                </div>
+            </form>
+            <div>
+                <h5>Overdue</h5>
+                <ul id="overdue" class="list-none">
+                    <%- include("todos.ejs",{todos: overdue})%>
+                </ul>
+            </div>
+            <div>
+                <h5>Due Today</h5>
+                <ul id="dueToday" class="list-none">
+                    <%- include("todos.ejs",{todos: dueToday})%>
+                </ul>
+            </div>
+            <div>
+                <h5>Due Later</h5>
+                <ul id="dueLater" class="list-none">
+                    <%- include("todos.ejs",{todos: dueLater})%>
+                </ul>
+            </div>
+        </div>
+    </div>
 </body>
 </html>

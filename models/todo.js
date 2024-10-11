@@ -1,5 +1,9 @@
 "use strict";
-const { Model } = require("sequelize");
+const { Model, Op, Sequelize } = require("sequelize");
+
+
+const today = new Date().toLocaleDateString("en-ca");
+
 module.exports = (sequelize, DataTypes) => {
   class Todo extends Model {
     /**
@@ -11,8 +15,30 @@ module.exports = (sequelize, DataTypes) => {
       // define association here
     }
 
-    static getTodos(){
-      return this.findAll();
+   
+  
+    static dueToday(){
+      return this.findAll({
+        where:{
+          dueDate: today
+        }
+      });
+    }
+
+    static overdue(){
+      return this.findAll({
+        where: {
+            dueDate: {[Sequelize.Op.lt]: today}
+        }
+      })
+    }
+
+    static dueLater(){
+      return this.findAll({
+        where: {
+          dueDate: {[Sequelize.Op.gt]: today}
+        }
+      })
     }
 
     static addTodo({ title, dueDate }) {

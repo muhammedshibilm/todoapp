@@ -1,17 +1,8 @@
 body{   
-    font-family: Calibari, sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    font-family:  sans-serif;
+    background-color: white;
 }
 
-table, th, td{
- border-collapse: collapse;
-  padding: 10px;
-  border: 2px solid black;
-}
-
-tr:nth-child(even){
-    background-color: #D6EEEE;
+.Todo-item:hover .Trash-icon {
+   display: block;
 }
