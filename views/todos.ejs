@@ -1,16 +1,16 @@
 <div>
     <div class="flex gap-2">
         <h5>Overdue</h5>
-        <span id="cout-overdue" class="px-2 bg-gray-300 rounded ">
+        <span id="count-overdue" class="px-2 bg-gray-300 rounded ">
             <%= overdue.length %>
         </span>
     </div>
     <ul class="list-none">
         <% overdue.forEach(todo=> { %>
-            <li class="Todo-item">
+            <li class="Todo-item" id="Todo-item-<%= todo.id %>">
                 <div class="flex w-fit my-2 px-2 item-center hover:bg-purple-200 rounded p-2">
-                    <input type="checkbox" id="todo-checkbox-<% todo.id %>" <% if (todo.completed){ %> checked <% } %> >
-                        <label for="todo-checkbox-<% todo.id %>" class="cursor-pointer ml-2 text-sm text-gray-600">
+                    <input type="checkbox" id="todo-checkbox-<%= todo.id %>" <% if (todo.completed){ %> checked <% } %> >
+                        <label for="todo-checkbox-<%= todo.id %>" class="cursor-pointer ml-2 text-sm text-gray-600">
                             <%= todo.title %>
                         </label>
                         <a href="#" class="hidden ml-2 Trash-icon">
@@ -28,16 +28,16 @@
 <div>
     <div class="flex gap-2">
         <h5 id="dueToday">Due Today</h5>
-        <span id="cout-due-today" class="px-2 bg-gray-300 rounded">
+        <span id="count-due-today" class="px-2 bg-gray-300 rounded">
             <%= dueToday.length %>
         </span>
     </div>
     <ul class="list-none">
         <% dueToday.forEach(todo=> { %>
-            <li class="Todo-item">
+            <li class="Todo-item" id="Todo-item-<%= todo.id %>">
                 <div class="flex w-fit my-2 px-2 item-center hover:bg-purple-200 rounded p-2">
-                    <input type="checkbox" id="todo-checkbox-<% todo.id %>" <% if (todo.completed){ %> checked <% } %> >
-                        <label for="todo-checkbox-<% todo.id %>" class="cursor-pointer ml-2 text-sm text-gray-600">
+                    <input type="checkbox" id="todo-checkbox-<%= todo.id %>" <% if (todo.completed){ %> checked <% } %> >
+                        <label for="todo-checkbox-<%= todo.id %>" class="cursor-pointer ml-2 text-sm text-gray-600">
                             <%= todo.title %>
                         </label>
                         <a href="#" class="hidden ml-2 Trash-icon">
@@ -61,10 +61,10 @@
     </div>
     <ul class="list-none">
         <% dueLater.forEach(todo=> { %>
-            <li class="Todo-item">
+            <li class="Todo-item" id="Todo-item-<%= todo.id %>">
                 <div class="flex w-fit my-2 px-2 item-center hover:bg-purple-200 rounded p-2">
-                    <input type="checkbox" id="todo-checkbox-<% todo.id %>" <% if (todo.completed){ %> checked <% } %> >
-                        <label for="todo-checkbox-<% todo.id %>" class="cursor-pointer ml-2 text-sm text-gray-600">
+                    <input type="checkbox" id="todo-checkbox-<%= todo.id %>" <% if (todo.completed){ %> checked <% } %> >
+                        <label for="todo-checkbox-<%= todo.id %>" class="cursor-pointer ml-2 text-sm text-gray-600">
                             <%= todo.title %>
                         </label>
                         <a href="#" class="hidden ml-2 Trash-icon">
