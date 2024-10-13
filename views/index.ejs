@@ -13,20 +13,21 @@
     <div class="grid grid-cols-6">
         <div class="col-start-3 col-span-2 space-y-3">
             <header> <%- include("header.ejs") %> </header>
-            <form>
+            <form method="post" action="/todos" >
                 <div class="flex gap-2">
                     <div class="flex-auto">
-                        <input type="text" name="task" id="task" placeholder="What's next ?"
+                        <input type="text" name="title" id="task" placeholder="What's next ?"
                             class="border border-gray-300 text-gray-900 p-2 w-full rounded text-smb leading-4" required>
                     </div>
                     <div class="flex-auto">
-                        <input type="date" name="date" id="date"
+                        <input type="date" name="dueDate" id="date"
                             class="border border-gray-300 text-gray-900 p-2 w-full rounded text-sm" required>
                     </div>
                     <div class="flex-none">
                         <button type="submit" class="bg-green-500 text-white p-2 w-full rounded-lg">Add</button>
                     </div>
-                </div>
+                                </div>
+
             </form>
             <div>
                 <div class="flex gap-2">

@@ -5,6 +5,7 @@ const bodyParser = require("body-parser");
 const { where } = require("sequelize");
 const path = require("path");
 app.use(bodyParser.json());
+app.use(express.urlencoded({ extended: false }));
 
 // Set up EJS as templating engine
 app.set("view engine", "ejs")
@@ -59,7 +60,7 @@ app.get("/todos/:id", async function (request, response) {
 app.post("/todos", async function (request, response) {
   try {
     const todo = await Todo.addTodo(request.body);
-    return response.json(todo);
+    return response.redirect("/");
   } catch (error) {
     console.log(error);
     return response.status(422).json(error);
