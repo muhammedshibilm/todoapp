@@ -3,7 +3,6 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "prepare": "husky install && npx husky add .husky/pre-commit",
     "test": "cross-env NODE_ENV=test jest --detectOpenHandles",
     "start": "nodemon -e js,ejs",
     "start:prod": "node index.js",
