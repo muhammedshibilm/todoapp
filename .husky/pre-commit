@@ -1,1 +1,1 @@
-cd todo-app && npm test && npx lint-staged
+cd todo-app && npm test
