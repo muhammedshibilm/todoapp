@@ -1,11 +1,11 @@
 <% data.forEach(todo=> { %>
     <li class="Todo-item" id="Todo-item-<%= todo.id %>">
         <div class="flex w-fit my-2 px-2 item-center hover:bg-purple-200 rounded p-2">
-            <input type="checkbox" id="todo-checkbox-<%= todo.id %>" <% if (todo.completed){ %> checked <% } %> >
+            <input type="checkbox" id="todo-checkbox-<%= todo.id %>" onclick="updateTodo(<%= todo.id %>)" <% if (todo.completed){ %> checked <% } %>  >
                 <label for="todo-checkbox-<%= todo.id %>" class="cursor-pointer ml-2 text-sm text-gray-600">
                     <%= todo.title %>
                 </label>
-                <a href="#" class="hidden ml-2 Trash-icon">
+                <a href="/"  class="hidden ml-2 Trash-icon" onclick="deleteTodo(<%= todo.id %>)">
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-5 h-5">
                         <path stroke-linecap="round" stroke-linejoin="round"

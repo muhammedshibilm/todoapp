@@ -4,16 +4,64 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta  name="csrf-token" content="<%= csrfToken %>" >
     <link rel="stylesheet" href="./css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.2/dist/tailwind.min.css" rel="stylesheet">
     <title>Todo-Manager</title>
+    <script>
+        var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
+    
+        function updateTodo(id){
+        
+         
+        fetch(`/todos/${id}`,{
+                method: "put",
+                headers:{
+                    "Content-Type": "application/json",
+                    "CSRF-Token": token
+                },
+                body: JSON.stringify({
+                    _csrf: token
+                })
+            }).then((res)=>{
+                if (res.ok) {
+                 
+                }
+            }).catch((error)=>{
+                console.error(error)
+            });
+        }
+
+        function deleteTodo(id){
+            console.log(id);
+            
+            fetch(`/todos/${id}`,{
+                method: "DELETE",
+                headers:{
+                    "Content-Type" : "application/json",
+                    "CSRF-Token": token
+                },
+                body: JSON.stringify({
+                    _csrf: token
+                })
+            }).then((res)=>{
+                if (res.ok) {
+                    window.location.reload()
+                }
+            }).catch((error)=>{
+                console.log(error);
+            })
+        }
+    </script>
 </head>
 
 <body>
+
     <div class="grid grid-cols-6">
         <div class="col-start-3 col-span-2 space-y-3">
             <header> <%- include("header.ejs") %> </header>
-            <form method="post" action="/todos" >
+            <form method="post" action="/todos">
+                <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
                 <div class="flex gap-2">
                     <div class="flex-auto">
                         <input type="text" name="title" id="task" placeholder="What's next ?"
@@ -26,7 +74,7 @@
                     <div class="flex-none">
                         <button type="submit" class="bg-green-500 text-white p-2 w-full rounded-lg">Add</button>
                     </div>
-                                </div>
+                </div>
 
             </form>
             <div>
@@ -37,7 +85,7 @@
                     </span>
                 </div>
                 <ul class="list-none">
-                   <%- include("todos.ejs", {data: overdue}) %>
+                    <%- include("todos.ejs", {data: overdue}) %>
                 </ul>
             </div>
 
@@ -64,7 +112,19 @@
                     <%- include("todos.ejs", {data: dueLater}) %>
                 </ul>
             </div>
-            
+
+            <div>
+                <div class="flex gap-2">
+                    <h5 id="dueLater">Completed Items</h5>
+                    <span id="count-completed" class="px-2 bg-gray-300 rounded">
+                        <%= dueLater.length %>
+                    </span>
+                </div>
+                <ul class="list-none">
+                    <%- include("todos.ejs", {data: dueLater}) %>
+                </ul>
+            </div>
+
         </div>
     </div>
     </div>

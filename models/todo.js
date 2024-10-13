@@ -17,7 +17,7 @@ module.exports = (sequelize, DataTypes) => {
 
    
   
-    static dueToday(){
+    static async dueToday(){
       return this.findAll({
         where:{
           dueDate: today
@@ -25,7 +25,7 @@ module.exports = (sequelize, DataTypes) => {
       });
     }
 
-    static overdue(){
+    static async overdue(){
       return this.findAll({
         where: {
             dueDate: {[Sequelize.Op.lt]: today}
@@ -33,7 +33,7 @@ module.exports = (sequelize, DataTypes) => {
       })
     }
 
-    static dueLater(){
+    static async dueLater(){
       return this.findAll({
         where: {
           dueDate: {[Sequelize.Op.gt]: today}
@@ -41,13 +41,22 @@ module.exports = (sequelize, DataTypes) => {
       })
     }
 
-    static addTodo({ title, dueDate }) {
+    static async addTodo({ title, dueDate }) {
       return this.create({ title: title, dueDate: dueDate, completed: false });
     }
 
-    markAsCompleted() {
+    async setCompletionStatus() {
       return this.update({ completed: true });
     }
+   
+   static async deleteTodo(id){
+    return this.destroy({
+      where: {
+        id,
+      }
+    })
+   }
+
   }
   Todo.init(
     {
