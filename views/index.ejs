@@ -4,51 +4,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta  name="csrf-token" content="<%= csrfToken %>" >
+    <meta name="csrf-token" content="<%= csrfToken %>">
     <link rel="stylesheet" href="./css/styles.css">
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.2/dist/tailwind.min.css" rel="stylesheet">
     <title>Todo-Manager</title>
     <script>
         var token = document.querySelector('meta[name="csrf-token"]').getAttribute('content');
-    
-        function updateTodo(id){
-        
-         
-        fetch(`/todos/${id}`,{
+
+        function updateTodo(id) {
+            fetch(`/todos/${id}`, {
                 method: "put",
-                headers:{
+                headers: {
                     "Content-Type": "application/json",
                     "CSRF-Token": token
                 },
                 body: JSON.stringify({
                     _csrf: token
                 })
-            }).then((res)=>{
+            }).then((res) => {
                 if (res.ok) {
-                 
+
                 }
-            }).catch((error)=>{
+            }).catch((error) => {
                 console.error(error)
             });
         }
 
-        function deleteTodo(id){
+        function deleteTodo(id) {
             console.log(id);
-            
-            fetch(`/todos/${id}`,{
+
+            fetch(`/todos/${id}`, {
                 method: "DELETE",
-                headers:{
-                    "Content-Type" : "application/json",
+                headers: {
+                    "Content-Type": "application/json",
                     "CSRF-Token": token
                 },
                 body: JSON.stringify({
                     _csrf: token
                 })
-            }).then((res)=>{
+            }).then((res) => {
                 if (res.ok) {
                     window.location.reload()
                 }
-            }).catch((error)=>{
+            }).catch((error) => {
                 console.log(error);
             })
         }
