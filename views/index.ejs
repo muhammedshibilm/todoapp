@@ -23,7 +23,7 @@
                 })
             }).then((res) => {
                 if (res.ok) {
-
+                    window.location.reload()
                 }
             }).catch((error) => {
                 console.error(error)
@@ -58,6 +58,10 @@
     <div class="grid grid-cols-6">
         <div class="col-start-3 col-span-2 space-y-3">
             <header> <%- include("header.ejs") %> </header>
+            <p class="py-2">Welcome to the TO-Do manager</p>
+            <p class="py-2">New here?  <a href="/signup" class="text-green-600" >Sign-up now</a></p>
+            <p class="py-2">New here?  <a href="/login" class="text-green-600">Sign-in now</a></p>
+
             <form method="post" action="/todos">
                 <input type="hidden" name="_csrf" value="<%= csrfToken %>" />
                 <div class="flex gap-2">
@@ -115,11 +119,11 @@
                 <div class="flex gap-2">
                     <h5 id="dueLater">Completed Items</h5>
                     <span id="count-completed" class="px-2 bg-gray-300 rounded">
-                        <%= dueLater.length %>
+                        <%= completedTodos.length %>
                     </span>
                 </div>
                 <ul class="list-none">
-                    <%- include("todos.ejs", {data: dueLater}) %>
+                    <%- include("todos.ejs", {data: completedTodos}) %>
                 </ul>
             </div>
 

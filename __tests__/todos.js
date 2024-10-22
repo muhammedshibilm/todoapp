@@ -36,7 +36,7 @@ describe("Todo Application", function () {
       completed: false,
       _csrf: csrfToken,
     });
-    expect(response.statusCode).toBe(302); // Expecting redirect after successful creation
+    expect(response.statusCode).toBe(302); 
   });
 
   test("Marks a todo with the given ID as complete", async () => {
@@ -78,7 +78,7 @@ describe("Todo Application", function () {
       completed: false,
       _csrf: csrfToken,
     });
-    expect(response.statusCode).toBe(302); // Expecting redirect after successful creation
+    expect(response.statusCode).toBe(302); 
   });
 
   test("Creates a sample due later item", async () => {
@@ -93,7 +93,7 @@ describe("Todo Application", function () {
       completed: false,
       _csrf: csrfToken,
     });
-    expect(response.statusCode).toBe(302); // Expecting redirect after successful creation
+    expect(response.statusCode).toBe(302); 
   });
 
   test("Creates a sample overdue item", async () => {
@@ -108,6 +108,6 @@ describe("Todo Application", function () {
       completed: false,
       _csrf: csrfToken,
     });
-    expect(response.statusCode).toBe(302); // Expecting redirect after successful creation
+    expect(response.statusCode).toBe(302); 
   });
 });
